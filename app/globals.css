@@ -1,26 +1,188 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  /* Light, clean palette */
+  --background: 45 30% 97%;
+  --foreground: 150 8% 18%;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --card: 0 0% 100%;
+  --card-foreground: 150 8% 18%;
+
+  --muted: 45 20% 93%;
+  --muted-foreground: 150 6% 40%;
+
+  --primary: 146 26% 36%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 45 18% 94%;
+  --secondary-foreground: 150 8% 25%;
+
+  --accent: 145 20% 50%;
+  --accent-foreground: 0 0% 100%;
+
+  --destructive: 0 70% 50%;
+  --destructive-foreground: 0 0% 100%;
+
+  --success: 146 26% 36%;
+  --success-foreground: 0 0% 100%;
+
+  --warning: 38 92% 50%;
+  --warning-foreground: 150 10% 15%;
+
+  --border: 45 16% 88%;
+  --input: 45 16% 88%;
+
+  --radius: 0.75rem;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 150 15% 10%;
+    --foreground: 40 20% 95%;
+
+    --card: 150 12% 13%;
+    --card-foreground: 40 20% 95%;
+
+    --muted: 150 10% 20%;
+    --muted-foreground: 140 10% 60%;
+
+    --primary: 145 45% 45%;
+    --primary-foreground: 150 15% 10%;
+
+    --secondary: 150 10% 18%;
+    --secondary-foreground: 40 20% 90%;
+
+    --accent: 145 35% 50%;
+    --accent-foreground: 150 15% 10%;
+
+    --destructive: 0 60% 45%;
+    --destructive-foreground: 40 20% 95%;
+
+    --success: 145 50% 40%;
+    --success-foreground: 150 15% 10%;
+
+    --warning: 38 85% 55%;
+    --warning-foreground: 150 15% 10%;
+
+    --border: 150 10% 22%;
+    --input: 150 10% 22%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-success: hsl(var(--success));
+  --color-success-foreground: hsl(var(--success-foreground));
+  --color-warning: hsl(var(--warning));
+  --color-warning-foreground: hsl(var(--warning-foreground));
+  --font-sans: var(--font-dm-sans);
 }
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-dm-sans), system-ui, -apple-system, sans-serif;
+  margin: 0;
+}
+
+.eco-card {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+}
+
+.eco-input {
+  width: 100%;
+  border: 1px solid hsl(var(--input));
+  background: hsl(var(--background));
+  border-radius: 0.9rem;
+  padding: 0.85rem 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.eco-input:focus {
+  outline: none;
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 0 4px hsl(var(--primary) / 0.12);
+  transform: translateY(-1px);
+}
+
+.eco-label {
+  font-size: 0.9rem;
+  color: hsl(var(--foreground) / 0.8);
+  font-weight: 600;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: -0.01em;
+}
+
+.status-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: hsl(var(--primary));
+  box-shadow: 0 0 0 6px hsl(var(--primary) / 0.12);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid hsl(var(--border) / 0.5);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(12px);
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 2.8s linear infinite;
+}
+
