@@ -4,7 +4,7 @@ import { ApifyClient } from 'apify-client';
 export const runtime = 'nodejs';
 
 const token = process.env.APIFY_TOKEN;
-const actorId = process.env.APIFY_ACTOR_ID || 'username/greenwashing-detector';
+const actorId = process.env.APIFY_ACTOR_ID || 'momentous_hill/greenwashing-detector-for-esgs';
 const client = new ApifyClient({ token });
 
 type AuditRequest = {

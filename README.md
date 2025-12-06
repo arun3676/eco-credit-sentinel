@@ -27,7 +27,7 @@ Eco-Credit Sentinel is a Next.js application that detects greenwashing in corpor
 - Apify account with:
   - API Token
   - Key-Value Store ID
-  - Actor ID (or use default: `username/greenwashing-detector`)
+  - Actor ID: `momentous_hill/greenwashing-detector-for-esgs`
 
 ## Environment Variables
 
@@ -36,7 +36,7 @@ Create a `.env.local` file in the root directory with the following variables:
 ```env
 APIFY_TOKEN=your_apify_api_token
 APIFY_KEY_VALUE_STORE_ID=your_key_value_store_id
-APIFY_ACTOR_ID=username/greenwashing-detector  # Optional, defaults to 'username/greenwashing-detector'
+APIFY_ACTOR_ID=momentous_hill/greenwashing-detector-for-esgs  # Required: Your Apify Actor ID
 ```
 
 ### Getting Your Apify Credentials
@@ -53,8 +53,8 @@ APIFY_ACTOR_ID=username/greenwashing-detector  # Optional, defaults to 'username
 
 3. **APIFY_ACTOR_ID**:
    - Format: `username/actor-name`
-   - Default: `username/greenwashing-detector`
-   - Update if you're using a custom actor
+   - Required: `momentous_hill/greenwashing-detector-for-esgs`
+   - This is the Actor ID that will be used for the audit process
 
 ## Installation
 
@@ -109,7 +109,7 @@ pnpm start
 5. Add environment variables in Vercel project settings:
    - `APIFY_TOKEN`
    - `APIFY_KEY_VALUE_STORE_ID`
-   - `APIFY_ACTOR_ID` (optional)
+   - `APIFY_ACTOR_ID` (required: `momentous_hill/greenwashing-detector-for-esgs`)
 6. Click "Deploy"
 
 ### Option 2: Deploy via Vercel CLI

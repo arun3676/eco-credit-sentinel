@@ -16,7 +16,7 @@ In Vercel project settings, add these environment variables:
 ```
 APIFY_TOKEN=your_apify_api_token
 APIFY_KEY_VALUE_STORE_ID=your_key_value_store_id
-APIFY_ACTOR_ID=username/greenwashing-detector
+APIFY_ACTOR_ID=momentous_hill/greenwashing-detector-for-esgs
 ```
 
 **How to add:**
@@ -44,7 +44,7 @@ APIFY_ACTOR_ID=username/greenwashing-detector
 |----------|-------------|-----------------|
 | `APIFY_TOKEN` | Apify API authentication token | [Apify Console → Settings → Integrations](https://console.apify.com/account/integrations) |
 | `APIFY_KEY_VALUE_STORE_ID` | Key-Value Store ID for file storage | [Apify Console → Storage → Key-Value Stores](https://console.apify.com/storage/key-value-stores) |
-| `APIFY_ACTOR_ID` | Actor ID (optional, has default) | Format: `username/actor-name` |
+| `APIFY_ACTOR_ID` | Actor ID (required) | `momentous_hill/greenwashing-detector-for-esgs` |
 
 ### Getting Your Credentials
 
@@ -59,9 +59,8 @@ APIFY_ACTOR_ID=username/greenwashing-detector
 3. Copy the **Store ID** from the store details page
 
 #### APIFY_ACTOR_ID
-- Default: `username/greenwashing-detector`
-- Update if using a custom actor
-- Format: `your-username/your-actor-name`
+- Required: `momentous_hill/greenwashing-detector-for-esgs`
+- This is the Actor ID used for the audit process
 
 ## Build Configuration
 
