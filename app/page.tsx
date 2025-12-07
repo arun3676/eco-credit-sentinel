@@ -44,6 +44,7 @@ export default function Home() {
   const [error, setError] = useState<string>("");
   const [showHow, setShowHow] = useState(false);
   const [showWhyNotGPT, setShowWhyNotGPT] = useState(false);
+  const [showWhoIsThisFor, setShowWhoIsThisFor] = useState(false);
   const [datasetId, setDatasetId] = useState<string>("");
 
   const pollRef = useRef<NodeJS.Timeout | null>(null);
@@ -178,7 +179,8 @@ export default function Home() {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-transparent" />
       <Header 
         onHowItWorks={() => setShowHow(true)} 
-        onWhyNotGPT={() => setShowWhyNotGPT(true)} 
+        onWhyNotGPT={() => setShowWhyNotGPT(true)}
+        onWhoIsThisFor={() => setShowWhoIsThisFor(true)}
       />
 
       <main className="relative mx-auto flex max-w-5xl flex-col gap-8 px-5 pb-16 pt-10">
@@ -365,6 +367,56 @@ export default function Home() {
                 <button
                   type="button"
                   onClick={() => setShowHow(false)}
+                  className="rounded-lg border border-border bg-card px-4 py-2 text-sm font-semibold text-foreground hover:border-primary/50 hover:text-primary transition-colors"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Who is this for modal */}
+      {showWhoIsThisFor && (
+        <div className="fixed inset-0 z-40 flex items-start justify-center bg-black/55 backdrop-blur-sm px-4 py-10 overflow-y-auto">
+          <div className="w-full max-w-2xl overflow-hidden rounded-2xl border border-border bg-card shadow-2xl my-10">
+            <div className="flex items-center justify-between gap-3 border-b border-border/70 bg-secondary/60 px-5 py-4">
+              <div className="space-y-1">
+                <p className="pill border border-primary/20 bg-primary/10 text-primary">Who is this for?</p>
+                <h3 className="text-lg font-semibold text-foreground">Two specific users</h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowWhoIsThisFor(false)}
+                className="text-lg text-muted-foreground hover:text-foreground"
+                aria-label="Close"
+              >
+                ×
+              </button>
+            </div>
+            <div className="px-5 py-6 text-sm text-foreground">
+              <div className="rounded-xl border border-border/70 bg-muted/40 px-4 py-4 space-y-4">
+                <div className="flex items-start gap-3">
+                  <span className="pill bg-primary/10 text-primary border border-primary/20 min-w-[2rem] justify-center">1</span>
+                  <div className="flex-1">
+                    <p className="font-semibold text-foreground mb-1">Sustainability-Linked Loan (SLL) Officers</p>
+                    <p className="text-muted-foreground">Who need to verify covenant targets quarterly to adjust interest rates.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="pill bg-primary/10 text-primary border border-primary/20 min-w-[2rem] justify-center">2</span>
+                  <div className="flex-1">
+                    <p className="font-semibold text-foreground mb-1">Private Equity Analysts</p>
+                    <p className="text-muted-foreground">Who need to screen 50+ potential targets for reputational risks overnight before making a bid.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex justify-end pt-4 mt-6">
+                <button
+                  type="button"
+                  onClick={() => setShowWhoIsThisFor(false)}
                   className="rounded-lg border border-border bg-card px-4 py-2 text-sm font-semibold text-foreground hover:border-primary/50 hover:text-primary transition-colors"
                 >
                   Close
